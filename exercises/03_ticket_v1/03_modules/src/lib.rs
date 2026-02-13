@@ -1,4 +1,7 @@
+//use crate::Ticket;
+
 mod helpers {
+    use crate::Ticket;
     // TODO: Make this code compile, either by adding a `use` statement or by using
     //  the appropriate path to refer to the `Ticket` struct.
 
