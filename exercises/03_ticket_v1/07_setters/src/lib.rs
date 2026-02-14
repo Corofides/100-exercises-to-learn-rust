@@ -11,39 +11,65 @@ pub struct Ticket {
 
 impl Ticket {
     pub fn new(title: String, description: String, status: String) -> Ticket {
-        if title.is_empty() {
-            panic!("Title cannot be empty");
-        }
-        if title.len() > 50 {
-            panic!("Title cannot be longer than 50 bytes");
-        }
-        if description.is_empty() {
-            panic!("Description cannot be empty");
-        }
-        if description.len() > 500 {
-            panic!("Description cannot be longer than 500 bytes");
-        }
-        if status != "To-Do" && status != "In Progress" && status != "Done" {
-            panic!("Only `To-Do`, `In Progress`, and `Done` statuses are allowed");
-        }
+        
+        let mut ticket = Ticket {
+            title: String::new(),
+            description: String::new(),
+            status: String::new(),
+        };
 
-        Ticket {
-            title,
-            description,
-            status,
-        }
+        Self::set_title(&mut ticket, title);
+        Self::set_description(&mut ticket, description);
+        Self::set_status(&mut ticket, status);
+        
+        ticket
+        
     }
 
     pub fn title(&self) -> &String {
         &self.title
     }
 
+    pub fn set_title(&mut self, title: String)  {
+        if title.is_empty() {
+            panic!("Title cannot be empty");
+        }
+
+        if title.len() > 50 {
+            panic!("Title cannot be longer than 50 bytes");
+        }
+
+        self.title = String::from(title);
+
+    }
+
     pub fn description(&self) -> &String {
         &self.description
     }
 
+    pub fn set_description(&mut self, description: String) {
+        if description.is_empty() {
+            panic!("Description cannot be empty");
+        }
+
+        if description.len() > 500 {
+            panic!("Description cannot be longer than 500 bytes");
+        }
+
+        self.description = String::from(description);
+
+    }
+
     pub fn status(&self) -> &String {
         &self.status
+    }
+
+    pub fn set_status(&mut self, status: String) {
+        if status != "To-Do" && status != "In Progress" && status != "Done" {
+            panic!("Only `To-Do`, `In Progress`, and `Done` statuses are allowed");
+        }
+
+        self.status = String::from(status);
     }
 }
 
