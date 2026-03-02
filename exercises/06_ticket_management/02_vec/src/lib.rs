@@ -10,10 +10,6 @@
 //
 // We expect `fibonacci(0)` to return `0`, `fibonacci(1)` to return `1`,
 // `fibonacci(2)` to return `1`, and so on.
-static mut FIB_NUMBERS: Vec<u32> = vec![];
-
-pub struct Fib {
-}
 
 pub fn fibonacci(n: u32) -> u32 {
 
