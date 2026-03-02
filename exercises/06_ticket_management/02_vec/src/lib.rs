@@ -10,12 +10,29 @@
 //
 // We expect `fibonacci(0)` to return `0`, `fibonacci(1)` to return `1`,
 // `fibonacci(2)` to return `1`, and so on.
+static mut FIB_NUMBERS: Vec<u32> = vec![];
+
+pub struct Fib {
+}
+
 pub fn fibonacci(n: u32) -> u32 {
-    // TODO: implement the `fibonacci` function
-    //
-    // Hint: use a `Vec` to memoize the results you have already calculated
-    // so that you don't have to recalculate them several times.
-    todo!()
+
+    let mut fib_numbers: Vec<u32> = vec![0, 1];
+    
+    let n = n as usize;
+    let index = n + 1;
+
+    if fib_numbers.len() >= index {
+        return *fib_numbers.get(n).unwrap();
+    }
+
+    for index in fib_numbers.len() .. n + 1 {
+        let mut fib_number = fib_numbers[index - 2] + fib_numbers[index - 1];
+        fib_numbers.push(fib_number);
+    }
+
+    *fib_numbers.get(n).unwrap()
+
 }
 
 #[cfg(test)]
