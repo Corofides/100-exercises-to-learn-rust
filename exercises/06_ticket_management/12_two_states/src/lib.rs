@@ -57,7 +57,6 @@ impl TicketStore {
         let ticket_id = self.current_id;
         self.current_id = self.current_id.saturating_add(1);
 
-        println!("{ticket_id:?}");
         let ticket_id = TicketId(ticket_id);
 
         self.tickets.push(Ticket {
