@@ -37,7 +37,6 @@ pub fn sum(v: Vec<i32>) -> i32 {
     };
 
     let left = left_handle.join().unwrap();
-    println!("Left {}", left);
     let right = right_handle.join().unwrap();
 
     left + right
