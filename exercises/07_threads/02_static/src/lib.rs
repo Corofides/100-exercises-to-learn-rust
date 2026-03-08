@@ -4,7 +4,18 @@
 use std::thread;
 
 pub fn sum(slice: &'static [i32]) -> i32 {
-    todo!()
+
+    // I'm guessing by no additional memory it just means like don't clone the vec?
+    // Dunno, anyway have this travesty.
+    thread::spawn(move || {
+        slice[0..(slice.len() / 2)]
+            .iter()
+            .fold(0, |acc, x| acc + x)
+    }).join().unwrap() + thread::spawn(move || {
+        slice[(slice.len() / 2)..slice.len()]
+            .iter()
+            .fold(0, |acc, x| acc + x)
+    }).join().unwrap()
 }
 
 #[cfg(test)]
